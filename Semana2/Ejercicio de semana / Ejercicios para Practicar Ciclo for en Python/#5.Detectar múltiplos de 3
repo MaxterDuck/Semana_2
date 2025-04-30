@@ -1,0 +1,6 @@
+#5.Detectar múltiplos de 3#
+
+print ("Estos son los multiplos de 3: ")
+for i in range (1,31):
+    if i %3==0:
+        print (i)

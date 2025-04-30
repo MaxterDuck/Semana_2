@@ -1,0 +1,9 @@
+#6.Contar letras a:
+palabra = input("Introduce la palabra: ")
+contador = 0 
+for letra in palabra:
+   if letra.lower() == "a":
+      contador += 1
+print (f"La letra 'a' aparece {contador} veces en la palabra. ")
+
+
