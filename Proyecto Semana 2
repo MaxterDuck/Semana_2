@@ -1,1 +1,64 @@
+# Programa para gestionar calificaciones y estadísticas
 
+def solicitar_calificacion():
+    while True:
+        try:
+            calificacion = float(input("Ingresa una calificación entre 0 y 100: "))
+            if 0 <= calificacion <= 100:
+                if calificacion >= 60:
+                    print("Aprobado.")
+                else:
+                    print("Reprobado.")
+                return calificacion
+            else:
+                print("Debe estar entre 0 y 100.")
+        except ValueError:
+            print("Entrada inválida. Ingresa un número.")
+
+def ingresar_lista_calificaciones():
+    while True:
+        entrada = input("Ingresa una lista de calificaciones separadas por comas (ej: 70,80,90): ")
+        try:
+            lista = [float(x.strip()) for x in entrada.split(",") if 0 <= float(x.strip()) <= 100]
+            if lista:
+                return lista
+            else:
+                print("Debe haber al menos una calificación válida.")
+        except ValueError:
+            print("Asegúrate de ingresar solo números entre 0 y 100, separados por comas.")
+
+def calcular_promedio(calificaciones):
+    promedio = sum(calificaciones) / len(calificaciones)
+    print(f"El promedio de las calificaciones es: {promedio:.2f}")
+
+def contar_mayores(calificaciones):
+    try:
+        valor = float(input("Ingresa un valor para contar cuántas calificaciones son mayores: "))
+        mayores = [c for c in calificaciones if c > valor]
+        print(f"Hay {len(mayores)} calificaciones mayores que {valor}.")
+    except ValueError:
+        print("Valor no válido.")
+
+def verificar_y_contar(calificaciones):
+    try:
+        valor = float(input("Ingresa la calificación a verificar: "))
+        contador = 0
+        for c in calificaciones:
+            if c == valor:
+                contador += 1
+                continue
+        print(f"La calificación {valor} aparece {contador} veces.")
+    except ValueError:
+        print("Entrada inválida.")
+
+def main():
+    print("Bienvenido al sistema de gestión de calificaciones\n")
+    solicitar_calificacion()
+    calificaciones = ingresar_lista_calificaciones()
+    calcular_promedio(calificaciones)
+    contar_mayores(calificaciones)
+    verificar_y_contar(calificaciones)
+    print("\nPrograma finalizado.")
+
+if __name__ == "__main__":
+    main()
